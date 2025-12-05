@@ -16,7 +16,7 @@ def driver():
     """
     Fixture to create and manage WebDriver instance
     Creates a new driver for each test and quits after test completion
-    
+
     Yields:
         WebDriver instance
     """
@@ -36,7 +36,7 @@ def session_driver():
     """
     Fixture to create a WebDriver instance for the entire test session
     Use this for tests that need to maintain state across multiple test functions
-    
+
     Yields:
         WebDriver instance
     """

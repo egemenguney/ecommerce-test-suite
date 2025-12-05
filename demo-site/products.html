@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Demo E-commerce</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">Demo E-commerce</a></h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <div class="account-menu">
+                    <a href="#" id="account-link">My Account</a>
+                    <div class="dropdown" id="account-dropdown">
+                        <a href="login.html" id="login-link">Login</a>
+                        <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="search-section">
+            <h2>Search Products</h2>
+            <form id="search-form">
+                <input type="text" name="search" id="search-input" placeholder="Search for products..." required>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <section class="products-section">
+            <div id="search-results-message"></div>
+            <div id="products-grid" class="products-grid">
+                <!-- Products will be loaded here -->
+            </div>
+            <div id="no-results" style="display: none;">
+                <p>There is no product that matches the search criteria.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Demo E-commerce. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="products.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success - Demo E-commerce</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">Demo E-commerce</a></h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="success-section">
+            <h1>Your order has been placed!</h1>
+            <p class="order-id" id="order-id">Order ID: Loading...</p>
+            <p>Thank you for your purchase. Your order has been successfully processed.</p>
+            <div style="margin-top: 2rem;">
+                <a href="index.html" class="btn btn-primary">Continue Shopping</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Demo E-commerce. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Get order ID from URL or localStorage
+        const urlParams = new URLSearchParams(window.location.search);
+        let orderId = urlParams.get('order');
+        
+        if (!orderId) {
+            orderId = localStorage.getItem('lastOrderId') || 'ORD-' + Date.now();
+        }
+        
+        document.getElementById('order-id').textContent = 'Order ID: ' + orderId;
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,16 @@
+selenium==4.15.2
+pytest==7.4.3
+pytest-html==4.1.1
+pytest-xdist==3.5.0
+pytest-cov==4.1.0
+webdriver-manager==4.0.1
+python-dotenv==1.0.0
+allure-pytest==2.13.2
+
+# Code Quality Tools (optional, for development)
+black==23.12.1
+flake8==7.0.0
+pylint==3.0.3
+mypy==1.8.0
+pre-commit==3.6.0
+

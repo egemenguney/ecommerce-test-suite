@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Demo E-commerce</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">Demo E-commerce</a></h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="checkout-section">
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <div class="form-section">
+                    <h3>Billing Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="input-payment-firstname">First Name</label>
+                            <input type="text" id="input-payment-firstname" name="firstname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-payment-lastname">Last Name</label>
+                            <input type="text" id="input-payment-lastname" name="lastname" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-payment-email">Email</label>
+                        <input type="email" id="input-payment-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-payment-telephone">Telephone</label>
+                        <input type="tel" id="input-payment-telephone" name="telephone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-payment-address-1">Address</label>
+                        <input type="text" id="input-payment-address-1" name="address" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="input-payment-city">City</label>
+                            <input type="text" id="input-payment-city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-payment-postcode">Post Code</label>
+                            <input type="text" id="input-payment-postcode" name="postcode" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="input-payment-country">Country</label>
+                            <select id="input-payment-country" name="country" required>
+                                <option value="">Select Country</option>
+                                <option value="United States">United States</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Canada">Canada</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-payment-zone">Region / State</label>
+                            <select id="input-payment-zone" name="zone" required>
+                                <option value="">Select Region</option>
+                                <option value="California">California</option>
+                                <option value="New York">New York</option>
+                                <option value="Texas">Texas</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Shipping Method</h3>
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" name="shipping_method" value="flat.flat" checked>
+                            Flat Rate
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Payment Method</h3>
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" name="payment_method" value="cod" checked>
+                            Cash On Delivery
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="agree" id="terms-checkbox" required>
+                            I have read and agree to the Terms and Conditions
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Confirm Order</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Demo E-commerce. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>
+

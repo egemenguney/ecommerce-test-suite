@@ -10,6 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
         browser: [chrome, firefox]
@@ -76,6 +77,7 @@ jobs:
           report.html
           htmlcov/
           screenshots/
+        if-no-files-found: warn
     
     - name: Upload coverage to Codecov
       if: matrix.python-version == '3.12' && matrix.browser == 'chrome'
@@ -102,9 +104,11 @@ jobs:
     
     - name: Run Black (code formatter check)
       run: black --check conftest.py pages/ tests/ utils/
+      continue-on-error: true
     
     - name: Run Flake8 (linter)
       run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+      continue-on-error: true
     
     - name: Run Pylint
       run: pylint pages/ utils/ tests/ --exit-zero

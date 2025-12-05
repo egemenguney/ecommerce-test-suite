@@ -11,8 +11,20 @@ from utils.config import BROWSER, HEADLESS
 from utils.driver_setup import create_driver, quit_driver
 
 
+def pytest_addoption(parser):
+    """
+    Add custom command line options for pytest
+    """
+    parser.addoption(
+        "--browser",
+        action="store",
+        default=None,
+        help="Browser to use for tests (chrome, firefox, edge). Overrides BROWSER env var.",
+    )
+
+
 @pytest.fixture(scope="function")
-def driver():
+def driver(request):
     """
     Fixture to create and manage WebDriver instance
     Creates a new driver for each test and quits after test completion
@@ -20,10 +32,14 @@ def driver():
     Yields:
         WebDriver instance
     """
+    # Get browser from CLI argument or use default from config
+    browser_arg = request.config.getoption("--browser")
+    browser_name = browser_arg if browser_arg else None
+
     driver = None
     try:
-        # Create driver instance
-        driver = create_driver()
+        # Create driver instance with optional browser override
+        driver = create_driver(browser_name=browser_name)
         yield driver
     finally:
         # Cleanup: Quit driver after test
@@ -32,7 +48,7 @@ def driver():
 
 
 @pytest.fixture(scope="session")
-def session_driver():
+def session_driver(request):
     """
     Fixture to create a WebDriver instance for the entire test session
     Use this for tests that need to maintain state across multiple test functions
@@ -40,9 +56,13 @@ def session_driver():
     Yields:
         WebDriver instance
     """
+    # Get browser from CLI argument or use default from config
+    browser_arg = request.config.getoption("--browser")
+    browser_name = browser_arg if browser_arg else None
+
     driver = None
     try:
-        driver = create_driver()
+        driver = create_driver(browser_name=browser_name)
         yield driver
     finally:
         if driver:

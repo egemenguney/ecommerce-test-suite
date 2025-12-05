@@ -14,7 +14,7 @@ class CheckoutPage:
     Page Object Model for Checkout Page
     Contains locators and methods for checkout process
     """
-    
+
     # Billing Details Locators
     FIRST_NAME_INPUT = (By.ID, 'input-payment-firstname')
     LAST_NAME_INPUT = (By.ID, 'input-payment-lastname')

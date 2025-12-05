@@ -18,7 +18,7 @@ class TestCheckout:
     Test class for checkout functionality
     Contains test cases for checkout process
     """
-    
+
     @pytest.fixture(autouse=True)
     def setup_cart(self, driver):
         """

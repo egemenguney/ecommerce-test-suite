@@ -16,7 +16,7 @@ class TestCart:
     Test class for shopping cart functionality
     Contains test cases for various cart operations
     """
-    
+
     def test_add_product_to_cart(self, driver):
         """
         Test Case: Add Product to Cart

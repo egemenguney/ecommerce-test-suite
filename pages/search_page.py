@@ -4,9 +4,9 @@ Handles product search functionality
 """
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import Select, WebDriverWait
+
 from utils.config import EXPLICIT_WAIT
 
 
@@ -28,7 +28,7 @@ class SearchPage:
     def __init__(self, driver):
         """
         Initialize SearchPage with WebDriver instance
-        
+
         Args:
             driver: WebDriver instance
         """
@@ -38,7 +38,7 @@ class SearchPage:
     def enter_search_term(self, search_term: str):
         """
         Enter search term in the search input field
-        
+
         Args:
             search_term: Product name or keyword to search
         """
@@ -60,7 +60,7 @@ class SearchPage:
     def search(self, search_term: str):
         """
         Complete search flow: enter term and submit
-        
+
         Args:
             search_term: Product name or keyword to search
         """
@@ -70,7 +70,7 @@ class SearchPage:
     def search_with_enter(self, search_term: str):
         """
         Search by pressing Enter key instead of clicking button
-        
+
         Args:
             search_term: Product name or keyword to search
         """
@@ -84,7 +84,7 @@ class SearchPage:
     def get_search_results_count(self) -> int:
         """
         Get the number of search results displayed
-        
+
         Returns:
             Number of search results
         """
@@ -93,13 +93,13 @@ class SearchPage:
                 EC.presence_of_all_elements_located(self.SEARCH_RESULTS)
             )
             return len(results)
-        except:
+        except Exception:
             return 0
     
     def is_no_results_message_displayed(self) -> bool:
         """
         Check if "no results" message is displayed
-        
+
         Returns:
             True if no results message is visible, False otherwise
         """
@@ -108,13 +108,13 @@ class SearchPage:
                 EC.presence_of_element_located(self.NO_RESULTS_MESSAGE)
             )
             return no_results.is_displayed()
-        except:
+        except Exception:
             return False
     
     def get_product_names(self) -> list:
         """
         Get list of product names from search results
-        
+
         Returns:
             List of product names
         """
@@ -123,13 +123,13 @@ class SearchPage:
                 EC.presence_of_all_elements_located(self.PRODUCT_NAME)
             )
             return [product.text for product in product_elements]
-        except:
+        except Exception:
             return []
     
     def click_product(self, product_name: str):
         """
         Click on a specific product by name
-        
+
         Args:
             product_name: Name of the product to click
         """
@@ -140,7 +140,7 @@ class SearchPage:
                 )
             )
             product_link.click()
-        except:
+        except Exception:
             # Fallback: Try partial link text
             product_link = self.wait.until(
                 EC.element_to_be_clickable(
@@ -152,7 +152,7 @@ class SearchPage:
     def sort_results(self, sort_option: str):
         """
         Sort search results by given option
-        
+
         Args:
             sort_option: Sort option (e.g., "Price (Low > High)")
         """
@@ -163,17 +163,17 @@ class SearchPage:
                 )
             )
             sort_dropdown.select_by_visible_text(sort_option)
-        except:
+        except Exception:
             # If dropdown doesn't exist, skip sorting
             pass
     
     def verify_search_results_contain(self, search_term: str) -> bool:
         """
         Verify that search results contain the search term
-        
+
         Args:
             search_term: Term to verify in results
-        
+
         Returns:
             True if results contain the term, False otherwise
         """

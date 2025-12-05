@@ -4,6 +4,7 @@ Contains environment variables, URLs, and test data
 """
 import os
 from typing import Final
+
 from dotenv import load_dotenv
 
 # Note: Final type hint requires Python 3.8+

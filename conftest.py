@@ -2,11 +2,13 @@
 Pytest configuration file
 Contains fixtures and test setup/teardown
 """
+import os
+
 import pytest
 from selenium.webdriver.remote.webdriver import WebDriver
-from utils.driver_setup import create_driver, quit_driver
+
 from utils.config import BROWSER, HEADLESS
-import os
+from utils.driver_setup import create_driver, quit_driver
 
 
 @pytest.fixture(scope="function")
@@ -92,7 +94,7 @@ def pytest_runtest_makereport(item, call):
     """
     outcome = yield
     rep = outcome.get_result()
-    
+
     # Check if test failed and screenshot is enabled
     if rep.when == "call" and rep.failed:
         # Get driver from fixture if available

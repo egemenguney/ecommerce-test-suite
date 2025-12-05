@@ -3,8 +3,9 @@ Cart Page Object Model
 Handles shopping cart functionality
 """
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
 from utils.config import EXPLICIT_WAIT
 
 
@@ -29,7 +30,7 @@ class CartPage:
     def __init__(self, driver):
         """
         Initialize CartPage with WebDriver instance
-        
+
         Args:
             driver: WebDriver instance
         """
@@ -58,7 +59,7 @@ class CartPage:
     def get_cart_items_count(self) -> int:
         """
         Get the number of items in the cart
-        
+
         Returns:
             Number of items in cart
         """
@@ -67,13 +68,13 @@ class CartPage:
                 EC.presence_of_all_elements_located(self.CART_ITEMS)
             )
             return len(items)
-        except:
+        except Exception:
             return 0
     
     def remove_item_from_cart(self, item_index: int = 0):
         """
         Remove an item from cart by index
-        
+
         Args:
             item_index: Index of item to remove (default: 0 for first item)
         """
@@ -83,14 +84,14 @@ class CartPage:
             )
             if item_index < len(remove_buttons):
                 remove_buttons[item_index].click()
-        except:
+        except Exception:
             # Alternative: Remove by product name if available
             pass
     
     def update_quantity(self, quantity: int, item_index: int = 0):
         """
         Update quantity of an item in cart
-        
+
         Args:
             quantity: New quantity value
             item_index: Index of item to update (default: 0)
@@ -102,19 +103,19 @@ class CartPage:
             if item_index < len(quantity_inputs):
                 quantity_inputs[item_index].clear()
                 quantity_inputs[item_index].send_keys(str(quantity))
-                
+
                 # Click update button
                 update_btn = self.wait.until(
                     EC.element_to_be_clickable(self.UPDATE_BUTTON)
                 )
                 update_btn.click()
-        except:
+        except Exception:
             pass
     
     def is_cart_empty(self) -> bool:
         """
         Check if cart is empty
-        
+
         Returns:
             True if cart is empty, False otherwise
         """
@@ -123,14 +124,14 @@ class CartPage:
                 EC.presence_of_element_located(self.EMPTY_CART_MESSAGE)
             )
             return empty_message.is_displayed()
-        except:
+        except Exception:
             # If empty message not found, check item count
             return self.get_cart_items_count() == 0
     
     def get_cart_total(self) -> str:
         """
         Get the total price of items in cart
-        
+
         Returns:
             Cart total as string
         """
@@ -139,7 +140,7 @@ class CartPage:
                 EC.presence_of_element_located(self.CART_TOTAL)
             )
             return total_element.text
-        except:
+        except Exception:
             return ""
     
     def click_checkout(self):
@@ -163,10 +164,10 @@ class CartPage:
     def verify_product_in_cart(self, product_name: str) -> bool:
         """
         Verify that a specific product is in the cart
-        
+
         Args:
             product_name: Name of product to verify
-        
+
         Returns:
             True if product is in cart, False otherwise
         """
@@ -178,6 +179,6 @@ class CartPage:
                 )
             )
             return product_element.is_displayed()
-        except:
+        except Exception:
             return False
 

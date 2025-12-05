@@ -3,11 +3,12 @@ Test cases for Checkout functionality
 Tests complete checkout process
 """
 import pytest
-from pages.checkout_page import CheckoutPage
+
 from pages.cart_page import CartPage
-from pages.search_page import SearchPage
+from pages.checkout_page import CheckoutPage
 from pages.login_page import LoginPage
-from utils.config import TEST_USERNAME, TEST_PASSWORD, PRODUCT_NAME
+from pages.search_page import SearchPage
+from utils.config import PRODUCT_NAME, TEST_PASSWORD, TEST_USERNAME
 
 
 @pytest.mark.checkout

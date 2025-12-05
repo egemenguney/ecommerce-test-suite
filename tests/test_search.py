@@ -3,8 +3,9 @@ Test cases for Search functionality
 Tests product search and search results validation
 """
 import pytest
+
 from pages.search_page import SearchPage
-from utils.config import SEARCH_TERM, PRODUCT_NAME
+from utils.config import PRODUCT_NAME, SEARCH_TERM
 
 
 @pytest.mark.search

@@ -3,9 +3,9 @@ Checkout Page Object Model
 Handles checkout process functionality
 """
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import Select, WebDriverWait
+
 from utils.config import EXPLICIT_WAIT
 
 
@@ -48,19 +48,28 @@ class CheckoutPage:
     def __init__(self, driver):
         """
         Initialize CheckoutPage with WebDriver instance
-        
+
         Args:
             driver: WebDriver instance
         """
         self.driver = driver
         self.wait = WebDriverWait(driver, EXPLICIT_WAIT)
     
-    def fill_billing_details(self, first_name: str, last_name: str, email: str, 
-                           telephone: str, address: str, city: str, 
-                           postcode: str, country: str, region: str):
+    def fill_billing_details(
+        self,
+        first_name: str,
+        last_name: str,
+        email: str,
+        telephone: str,
+        address: str,
+        city: str,
+        postcode: str,
+        country: str,
+        region: str,
+    ):
         """
         Fill in billing details form
-        
+
         Args:
             first_name: First name
             last_name: Last name
@@ -106,7 +115,7 @@ class CheckoutPage:
     def select_shipping_method(self, method: str = "Flat Rate"):
         """
         Select shipping method
-        
+
         Args:
             method: Shipping method name (default: "Flat Rate")
         """
@@ -128,7 +137,7 @@ class CheckoutPage:
     def select_payment_method(self, method: str = "Cash On Delivery"):
         """
         Select payment method
-        
+
         Args:
             method: Payment method name (default: "Cash On Delivery")
         """
@@ -179,7 +188,7 @@ class CheckoutPage:
     def is_order_successful(self) -> bool:
         """
         Check if order was placed successfully
-        
+
         Returns:
             True if order success message is displayed, False otherwise
         """
@@ -194,7 +203,7 @@ class CheckoutPage:
     def get_order_id(self) -> str:
         """
         Get the order ID from success page
-        
+
         Returns:
             Order ID as string
         """
@@ -206,12 +215,15 @@ class CheckoutPage:
         except:
             return ""
     
-    def complete_checkout(self, billing_details: dict, 
-                         shipping_method: str = "Flat Rate",
-                         payment_method: str = "Cash On Delivery"):
+    def complete_checkout(
+        self,
+        billing_details: dict,
+        shipping_method: str = "Flat Rate",
+        payment_method: str = "Cash On Delivery",
+    ):
         """
         Complete the entire checkout process
-        
+
         Args:
             billing_details: Dictionary containing billing information
             shipping_method: Shipping method to use

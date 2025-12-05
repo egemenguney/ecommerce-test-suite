@@ -3,6 +3,7 @@ Test cases for Shopping Cart functionality
 Tests adding/removing items and cart operations
 """
 import pytest
+
 from pages.cart_page import CartPage
 from pages.search_page import SearchPage
 from utils.config import PRODUCT_NAME

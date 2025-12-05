@@ -4,8 +4,9 @@ Tests valid and invalid login scenarios
 """
 import pytest
 from selenium.webdriver.common.by import By
+
 from pages.login_page import LoginPage
-from utils.config import TEST_USERNAME, TEST_PASSWORD
+from utils.config import TEST_PASSWORD, TEST_USERNAME
 
 
 @pytest.mark.login
@@ -20,7 +21,7 @@ class TestLogin:
         """
         Test Case: Valid Login
         This test verifies that a user can successfully log in with valid credentials
-        
+
         Steps:
         1. Navigate to login page
         2. Enter valid email and password
@@ -37,14 +38,15 @@ class TestLogin:
         login_page.login(TEST_USERNAME, TEST_PASSWORD)
         
         # Assert: Verify login was successful
-        assert login_page.is_login_successful(), \
+        assert login_page.is_login_successful(), (
             "Login should be successful with valid credentials"
+        )
     
     def test_invalid_email_login(self, driver):
         """
         Test Case: Invalid Email Login
         This test verifies that login fails with invalid email format
-        
+
         Steps:
         1. Navigate to login page
         2. Enter invalid email and valid password
@@ -60,14 +62,16 @@ class TestLogin:
         # Assert: Verify error message is displayed
         error_displayed = login_page.is_error_message_displayed()
         error_text = login_page.get_error_message_text()
-        assert error_displayed, \
-            f"Error message should be displayed for invalid email. Current page: {driver.current_url}. Error text found: '{error_text}'"
+        assert error_displayed, (
+            f"Error message should be displayed for invalid email. "
+            f"Current page: {driver.current_url}. Error text found: '{error_text}'"
+        )
     
     def test_invalid_password_login(self, driver):
         """
         Test Case: Invalid Password Login
         This test verifies that login fails with incorrect password
-        
+
         Steps:
         1. Navigate to login page
         2. Enter valid email and invalid password
@@ -81,14 +85,15 @@ class TestLogin:
         login_page.login(TEST_USERNAME, "wrong_password")
         
         # Assert: Verify error message is displayed
-        assert login_page.is_error_message_displayed(), \
+        assert login_page.is_error_message_displayed(), (
             "Error message should be displayed for invalid password"
+        )
     
     def test_empty_credentials_login(self, driver):
         """
         Test Case: Empty Credentials Login
         This test verifies that login fails when credentials are empty
-        
+
         Steps:
         1. Navigate to login page
         2. Leave email and password fields empty
@@ -112,14 +117,15 @@ class TestLogin:
         except:
             is_button_enabled = True
         
-        assert error_displayed or not is_button_enabled, \
+        assert error_displayed or not is_button_enabled, (
             "Form should not accept empty credentials - either show error or prevent submission"
+        )
     
     def test_login_with_special_characters(self, driver):
         """
         Test Case: Login with Special Characters
         This test verifies handling of special characters in credentials
-        
+
         Steps:
         1. Navigate to login page
         2. Enter email with special characters
@@ -138,6 +144,7 @@ class TestLogin:
         login_successful = login_page.is_login_successful()
         
         # System should either reject invalid email (show error) or prevent login
-        assert error_displayed or not login_successful, \
+        assert error_displayed or not login_successful, (
             "System should handle special characters in email field - either show error or prevent login"
+        )
 

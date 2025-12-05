@@ -14,7 +14,7 @@ class CartPage:
     Page Object Model for Shopping Cart Page
     Contains locators and methods for cart operations
     """
-    
+
     # Locators
     ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, 'button[onclick*="cart.add"]')
     CART_ICON = (By.CSS_SELECTOR, '#cart')

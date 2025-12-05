@@ -16,7 +16,7 @@ class TestLogin:
     Test class for login functionality
     Contains test cases for various login scenarios
     """
-    
+
     def test_valid_login(self, driver):
         """
         Test Case: Valid Login

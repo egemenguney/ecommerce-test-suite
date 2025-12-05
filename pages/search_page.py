@@ -15,7 +15,7 @@ class SearchPage:
     Page Object Model for Search Page
     Contains locators and methods for search functionality
     """
-    
+
     # Locators
     SEARCH_INPUT = (By.NAME, 'search')
     SEARCH_BUTTON = (By.CSS_SELECTOR, 'button[type="button"] i.fa-search')

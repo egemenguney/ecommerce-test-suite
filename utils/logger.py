@@ -11,11 +11,11 @@ from pathlib import Path
 def setup_logger(name: str = "ecommerce_test_suite", log_level: str = "INFO") -> logging.Logger:
     """
     Set up and configure logger for the test suite
-    
+
     Args:
         name: Logger name
         log_level: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-    
+
     Returns:
         Configured logger instance
     """
@@ -62,10 +62,10 @@ def setup_logger(name: str = "ecommerce_test_suite", log_level: str = "INFO") ->
 def get_logger(name: str = "ecommerce_test_suite") -> logging.Logger:
     """
     Get existing logger or create new one
-    
+
     Args:
         name: Logger name
-    
+
     Returns:
         Logger instance
     """

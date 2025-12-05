@@ -23,7 +23,7 @@ def _get_chromedriver_path():
     """
     Get the correct chromedriver executable path.
     Fixes issue where webdriver-manager returns wrong file path on Windows.
-    
+
     Returns:
         str: Path to chromedriver.exe
     """
@@ -67,11 +67,11 @@ def create_driver(
 ):
     """
     Create and configure a WebDriver instance
-    
+
     Args:
         browser_name: Browser to use (chrome, firefox, edge). Defaults to config.
         headless: Run in headless mode. Defaults to config.
-    
+
     Returns:
         WebDriver instance
     """
@@ -128,7 +128,7 @@ def create_driver(
 def quit_driver(driver):
     """
     Safely quit the WebDriver instance
-    
+
     Args:
         driver: WebDriver instance to quit
     """

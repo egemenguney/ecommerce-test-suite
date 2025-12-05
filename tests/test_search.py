@@ -15,7 +15,7 @@ class TestSearch:
     Test class for search functionality
     Contains test cases for various search scenarios
     """
-    
+
     def test_search_valid_product(self, driver):
         """
         Test Case: Search Valid Product

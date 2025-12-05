@@ -17,7 +17,7 @@ class LoginPage:
     Page Object Model for Login Page
     Contains locators and methods for login functionality
     """
-    
+
     # Locators - Using common e-commerce patterns
     # Note: These selectors may need adjustment based on actual site structure
     EMAIL_INPUT = (By.ID, 'input-email')

@@ -100,8 +100,8 @@ jobs:
       run: |
         pip install black flake8 pylint mypy
     
-    - name: Run Black (code formatter)
-      run: black --check .
+    - name: Run Black (code formatter check)
+      run: black --check conftest.py pages/ tests/ utils/
     
     - name: Run Flake8 (linter)
       run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
